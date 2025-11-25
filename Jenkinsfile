@@ -13,6 +13,13 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+    steps {
+        git branch: 'main',
+            url: 'https://github.com/fedibenman/ci',
+            credentialsId: 'github-creds'
+    }
+}
 
         stage('Build with Maven') {
             steps {
