@@ -7,30 +7,18 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('GIT') {
             steps {
-                echo "Building Spring Boot app..."
-                bat 'mvn clean package -DskipTests'
+                git branch 'main'
+                url:'https://github.com/fedibenman/ci' 
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                bat 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo "Starting Spring Boot application..."
-                bat 'java -jar target/*.jar'
-            }
+    stage ('compile stage'){
+        steps{
+            bat 'mvn clean compile'
         }
     }
-
-    post {
-        failure {
-            echo "FAILURE: Pipeline failed"
-        }
-    }
+   }
+    
 }
