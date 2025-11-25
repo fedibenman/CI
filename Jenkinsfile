@@ -17,7 +17,7 @@ pipeline {
     steps {
         git branch: 'main',
             url: 'https://github.com/fedibenman/ci',
-            credentialsId: 'github-creds'
+            credentialsId: 'SpringBoot_2'
     }
 }
 
