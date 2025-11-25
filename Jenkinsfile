@@ -12,15 +12,11 @@ pipeline {
         maven 'Maven'
     }
 
-    stages {
-        stage('Checkout') {
+stage('Clone Repo') {
     steps {
-        git branch: 'main',
-            url: 'https://github.com/fedibenman/ci',
-            credentialsId: 'SpringBoot_2'
+        sh 'git clone -b main https://github.com/fedibenman/ci.git'
     }
 }
-
         stage('Build with Maven') {
             steps {
                 bat 'mvn clean package'
