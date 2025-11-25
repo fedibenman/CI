@@ -25,9 +25,13 @@ pipeline {
 
 stage('Maven Build') {
     steps {
-        sh "${tool('Maven')}/bin/mvn clean package -DskipTests"
+        script {
+            def mvnHome = tool 'Maven'
+            sh "${mvnHome}/bin/mvn clean package -DskipTests"
+        }
     }
 }
+
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
