@@ -9,16 +9,16 @@ pipeline {
     stages {
         stage('GIT') {
             steps {
-                git branch 'main',
-                url:'https://github.com/fedibenman/ci' 
+                // Correct git syntax
+                git branch: 'main', url: 'https://github.com/fedibenman/ci'
             }
         }
 
-    stage ('compile stage'){
-        steps{
-            bat 'mvn clean compile'
+        stage('Compile') {
+            steps {
+                // Use 'bat' on Windows or 'sh' on Linux
+                bat 'mvn clean compile'
+            }
         }
     }
-   }
-    
 }
