@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     environment {
+        DOCKER_HOST = 'tcp://localhost:2375'
+    
         DOCKERHUB_CREDENTIALS = 'dockerhub-creds'  // Docker Hub credentials ID
         IMAGE_NAME = 'fedibenman/firstrepo'
         IMAGE_TAG = 'latest'
