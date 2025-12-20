@@ -8,5 +8,5 @@ WORKDIR /app
 COPY . .
 
 # Optional: build/run commands
-#RUN ./gradlew build
-# CMD ["java", "-jar", "yourapp.jar"]
+RUN ./gradlew build
+CMD ["java", "-jar", "yourapp.jar"]
