@@ -1,12 +1,5 @@
-# Use official OpenJDK 17 slim image
-FROM eclipse-temurin:17-jdk
-
-# Set working directory
+FROM openjdk:17-jdk-slim
 WORKDIR /app
-
-# Copy source code
-COPY . .
-
-# Optional: build/run commands
-RUN ./gradlew build
-CMD ["java", "-jar", "yourapp.jar"]
+COPY target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
